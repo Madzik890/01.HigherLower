@@ -14,9 +14,9 @@ namespace HigherLower
         private bool won = false;//varible using to end game
         private bool shown_intro = false;//varible using to check if intro shown
 
-        public Logic() { }
+        public Logic() { }//default constructor
 
-        public void SetUp(uint max_rand)
+        public void SetUp(uint max_rand)//setting up a logic to game
         {
             this.max_rand = max_rand;
             Random rnd = new Random();
@@ -25,7 +25,7 @@ namespace HigherLower
             rnd = null;
         }
 
-        public void Game()
+        public void Game()//main function
         {
             while (drawn == true && won == false)
             {
@@ -35,34 +35,31 @@ namespace HigherLower
             }
         }
 
-        private void ShowIntro()
+        private void ShowIntro()//showing intro only once
         {
             Console.WriteLine("--------Game started--------");
             Console.Write("Write number between 1 to " + max_rand.ToString() + " :");
 
-            shown_intro = true;
+            shown_intro = true;//for not showing intro int other steps
         }
 
-        private void CheckNumber()
+        private void CheckNumber()//main logic function wich checking number
         {
-            uint number = new uint();
-            if (uint.TryParse(Console.ReadLine(),out number))
+            uint number = new uint();//temp number
+
+            if (uint.TryParse(Console.ReadLine(),out number))//if user wrote a number 
             {
-                if (number == drawn_int)
+                if (number == drawn_int)//if wrote number is equal to drawn number
                 {
-                    Console.WriteLine("You won!");
-                    won = true;
+                    Console.WriteLine("You won!");//won!
+                    won = true;//to end main loop
                 }
                 else
-                if (number >= drawn_int)
-                {
+                if (number > drawn_int)//if wrote number is higher than drawn number
                     Console.WriteLine("Lower");
-                }
                 else
-                if (number <= drawn_int)
-                {
+                if (number < drawn_int)//if wrote number is lower than drawn number
                     Console.WriteLine("Higher");
-                }
             }
         }
  
